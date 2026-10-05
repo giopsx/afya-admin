@@ -14,7 +14,11 @@
 
 ## Objetivo do projeto
 
-`PREENCHER — 2 a 4 parágrafos`
+O objetivo deste projeto foi desenvolver um painel administrativo para a plataforma fictícia "Afya Pedagógico", povoado inteiramente com dados estáticos. Mais do que um sistema real, é um exercício prático da disciplina criado para unir HTML, organização de layouts, componentização visual e lógica em C# numa única aplicação. Na interface, o painel entrega um panorama completo de gestão, exibindo quatro indicadores principais com mini gráficos de tendência, um comparativo de Receita vs Meta, a distribuição de 1.842 clientes, barras de performance, um feed de atividades e uma tabela de projetos. Todo esse layout foi pensado para ser fluido, usando o sistema de grid para reorganizar os blocos de forma inteligente e funcionar perfeitamente no celular, no tablet ou no desktop.
+
+A escolha técnica para construir tudo isso foi o **Blazor WebAssembly autônomo**. Como o foco era trabalhar com dados fake para fins de interface, não havia necessidade de um backend: o C# roda diretamente no navegador do usuário, gerando um conjunto de arquivos estáticos tão simples que poderia ser hospedado no GitHub Pages. Para o projeto não virar uma bagunça, levei a arquitetura a sério: a página `Dashboard.razor` serve apenas para montar os blocos. Cada pedaço da tela virou um componente isolado na pasta `Components/`, e as informações ficaram na pasta `Data/`. Sem essa separação, eu teria terminado com um único arquivo inavegável de mais de 400 linhas.
+
+A restrição central — e o meu maior aprendizado — foi construir a interface sem escrever **nenhuma linha de CSS próprio**. Todo o visual da aplicação teve que sair exclusivamente dos parâmetros diretos nas tags, do tema configurado e das classes utilitárias do MudBlazor. Essa regra me obrigou a mergulhar na documentação do framework e parar de depender de arquivos CSS externos. A grande recompensa por respeitar essa restrição é que, ao depender totalmente das variáveis do MudBlazor, o suporte ao tema escuro da aplicação saiu completamente de graça.
 
 ## Tecnologias utilizadas
 
