@@ -2,27 +2,19 @@
 
 ## Identificação
 
-> ⚠️ **PREENCHER** — substitua cada campo abaixo pelos seus dados.
-
 | | |
 |---|---|
-| **Aluno(a)** | *(seu nome completo)* |
-| **Matrícula** | *(sua matrícula)* |
-| **Faculdade** | *(nome da faculdade)* |
-| **Curso** | *(nome do curso)* |
-| **Disciplina** | *(nome da disciplina)* |
-| **Professor(a)** | *(nome do professor)* |
+| **Aluno(a)** | `PREENCHER` |
+| **Matrícula** | `PREENCHER` |
+| **Faculdade** | `PREENCHER` |
+| **Curso** | `PREENCHER` |
+| **Disciplina** | `PREENCHER` |
+| **Professor(a)** | `PREENCHER` |
 | **Semestre** | 2026.2 |
 
 ## Objetivo do projeto
 
-> ⚠️ **ESCREVER COM SUAS PALAVRAS** (2 a 4 parágrafos).
->
-> Pontos que você pode usar como roteiro:
-> - o que é o painel "Afya Pedagógico" e o que a página Dashboard mostra;
-> - por que o projeto é um Blazor WebAssembly autônomo (não há backend; os dados são fictícios);
-> - qual foi a restrição central do trabalho (nenhum CSS próprio) e o que ela obrigou a aprender;
-> - como a página foi dividida em componentes em vez de um arquivo único.
+`PREENCHER — 2 a 4 parágrafos`
 
 ## Tecnologias utilizadas
 
@@ -68,21 +60,9 @@ do usuário são ocultados, e a tabela de Projetos Recentes deixa de ser tabela 
 cards, com cada célula rotulada pelo `DataLabel`.
 
 ### HTML gerado (DevTools)
-
-> ⚠️ **PRINT PENDENTE** — este é o único print que falta. Veja "Como tirar este print" logo abaixo.
-
 ![Inspeção do HTML no DevTools](docs/prints/devtools.png)
 
-> ⚠️ **ESCREVER COM SUAS PALAVRAS**: explique em poucas linhas qual componente você inspecionou,
-> qual HTML ele gerou e quais classes apareceram.
->
-> O arquivo [`docs/html-gerado.md`](docs/html-gerado.md) tem o HTML real já extraído da aplicação
-> (card de KPI, `MudStack`, `MudAvatar` e `MudButton`) para você conferir enquanto escreve.
-
-**Como tirar este print:** rode `dotnet watch`, abra a página no Chrome ou Edge, pressione `F12`,
-vá na aba **Elements**, clique no ícone de seleção (seta no canto superior esquerdo do DevTools) e
-clique sobre o card "Receita". Deixe o painel Elements e o painel Styles visíveis e capture a tela
-inteira. Salve como `docs/prints/devtools.png`.
+`PREENCHER — qual componente foi inspecionado, qual HTML ele gerou e quais classes apareceram`
 
 ## Estrutura do projeto
 
@@ -114,7 +94,7 @@ afya-admin/
 │   ├── img/alex-morgan.jpg            foto fictícia do usuário
 │   └── index.html                     a única página HTML real da aplicação
 ├── docs/
-│   ├── html-gerado.md                 HTML gerado pelos componentes (apoio ao print do DevTools)
+│   ├── html-gerado.md                 HTML gerado pelos componentes
 │   └── prints/                        imagens usadas neste README
 ├── App.razor                          roteador
 ├── Program.cs                         ponto de entrada
@@ -147,65 +127,42 @@ afya-admin/
 
 ## O que aprendi
 
-> ⚠️ **RESPONDER COM SUAS PRÓPRIAS PALAVRAS** — um parágrafo curto por pergunta.
->
-> Esta seção vale 15% da nota e é zerada se as respostas forem copiadas ou genéricas.
-> Cite sempre o **seu** projeto: nomes de arquivos, componentes e parâmetros que você usou.
-
 **1. Como uma aplicação Blazor WebAssembly inicia no navegador? Qual é o papel do `index.html`, da `<div id="app">` e do `Program.cs`?**
 
-*(sua resposta)*
+`PREENCHER`
 
 **2. Qual é a diferença entre um Layout, uma Page e um Component neste projeto? Dê um exemplo de cada.**
 
-*(sua resposta)*
+`PREENCHER`
 
 **3. O que é um `RenderFragment` e como o `DashboardCard` usa esse recurso para ser reutilizado por vários cards?**
 
-*(sua resposta)*
+`PREENCHER`
 
 **4. Como funciona o `@bind-Valor` no `SeletorPeriodo`? Qual é o papel do `ValorChanged`?**
 
-*(sua resposta)*
+`PREENCHER`
 
 **5. Por que os dados ficam na pasta `Data`, separados dos componentes? Que vantagem isso traz se, no futuro, os dados vierem de uma API?**
 
-*(sua resposta)*
+`PREENCHER`
 
 **6. Como o `MudGrid` com `xs`, `sm` e `lg` faz os cards de KPI se reorganizarem em telas de tamanhos diferentes?**
 
-*(sua resposta)*
+`PREENCHER`
 
 **7. Como foi possível estilizar a página inteira sem escrever CSS? Explique o papel do tema (`MudTheme`) e das classes utilitárias.**
 
-*(sua resposta)*
+`PREENCHER`
 
 **8. Por que o namespace do projeto é `afya_admin` e não `afya-admin`?**
 
-*(sua resposta)*
+`PREENCHER`
 
 ## Dificuldades e soluções
 
-> ⚠️ **ESCREVER COM SUAS PALAVRAS** — pelo menos dois problemas reais e como foram resolvidos.
->
-> Dois problemas que realmente aconteceram neste projeto e que você pode descrever:
->
-> **a) O nome do usuário não sumia no celular.** O bloco com "Alex Morgan" e o e-mail estava num
-> `<MudStack Class="d-none d-md-flex">`, exatamente como no tutorial, mas continuava visível em
-> telas pequenas. Inspecionando no DevTools, o elemento tinha as classes
-> `d-flex flex-column gap-0 d-none d-md-flex` ao mesmo tempo: o `MudStack` já emite a própria
-> classe `d-flex`, e no `MudBlazor.min.css` a regra `.d-flex { display:flex !important }` vem
-> depois de `.d-none { display:none !important }`. Com a mesma especificidade, quem vem por
-> último vence, então o `d-none` nunca fazia efeito. A solução foi pôr o `d-none d-md-flex` num
-> `<div>` externo (que não traz `d-flex` próprio) e deixar o `MudStack` dentro dele — a mesma
-> técnica que o tutorial usa com o `MudPaper` da busca, e que também não exige CSS.
->
-> **b)** *(descreva aqui um problema que **você** enfrentou ao digitar o código)*
+`PREENCHER — pelo menos dois problemas e como foram resolvidos`
 
 ## Melhorias futuras (opcional)
 
-> Ideias da seção 20 do tutorial que ainda não foram implementadas:
-> trocar a cor de destaque do tema, criar as demais páginas do menu com breadcrumb dinâmico,
-> fazer o seletor de período alterar os valores dos KPIs, mover os dados para um JSON carregado
-> via `HttpClient`, extrair um `IDashboardService`, fazer a busca filtrar a tabela e lembrar a
-> preferência de tema no `localStorage`.
+`PREENCHER (opcional)`
