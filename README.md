@@ -66,7 +66,7 @@ cards, com cada célula rotulada pelo `DataLabel`.
 ### HTML gerado (DevTools)
 ![Inspeção do HTML no DevTools](docs/prints/devtools.png)
 
-`PREENCHER — qual componente foi inspecionado, qual HTML ele gerou e quais classes apareceram`
+Ao inspecionar o cartão de KPI "Receita" no print acima, vemos claramente como os componentes se transformam em HTML padrão. O meu `<MudPaper Class="pa-4" Elevation="1" Height="100%">` virou uma simples `<div class="mud-paper mud-elevation-1 pa-4" style="height:100%;">`, onde o `Elevation` originou uma classe e o `Height` um estilo embutido. A classe utilitária `pa-4` passou intacta para a estrutura, e no painel *Styles* à direita confirmamos o seu comportamento: `.pa-4 { padding: 16px !important }`, servido diretamente pelo MudBlazor. Logo a seguir, o `<MudStack>` também se converteu numa `div`, traduzindo os parâmetros do componente em classes utilitárias CSS como `d-flex flex-row align-center gap-3`.
 
 ## Estrutura do projeto
 
