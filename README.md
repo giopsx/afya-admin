@@ -218,8 +218,14 @@ Para resolver isso, o SDK do .NET tem um comportamento padrão bem inteligente: 
 
 ## Dificuldades e soluções
 
-`PREENCHER — pelo menos dois problemas e como foram resolvidos`
+### Problema 1: o nome do usuário não sumia no celular
 
-## Melhorias futuras (opcional)
+O bloco com "Alex Morgan" e o e-mail dele estava dentro de um `<MudStack Class="d-none d-md-flex">`, exatamente como o tutorial orientava, mas o nome teimava em continuar aparecendo nas telas pequenas. Fui inspecionar no DevTools e vi que o elemento estava com as classes `d-flex flex-column gap-0 d-none d-md-flex` aplicadas ao mesmo tempo. O que acontece é que o `MudStack` já emite a própria classe `d-flex` por padrão. O grande vilão estava dentro do arquivo `MudBlazor.min.css`: a regra `.d-flex` é declarada depois da `.d-none`. Como as duas têm a mesma especificidade e ambas usam `!important`, a que vem por último no CSS sempre ganha a briga, invalidando completamente o meu `d-none`.
 
-`PREENCHER (opcional)`
+Para resolver, movi o `d-none d-md-flex` para uma `<div>` externa e joguei o `MudStack` lá dentro. Como a div comum não traz o `d-flex` embutido, a ocultação funcionou perfeitamente. É a mesma técnica que apliquei no `MudPaper` da barra de busca, mantendo a regra sagrada de não usar CSS customizado.
+
+### Problema 2: a página travada em "Loading"
+
+Em outro momento, depois de recompilar o código com o servidor ainda no ar, a aplicação simplesmente parou de abrir e ficou presa eternamente no círculo de carregamento. Olhando o Console, encontrei um erro 404 acusando que o arquivo `_framework/dotnet.ehvn6vwvtj.js` não existia. A causa disso é que o Blazor coloca uma impressão digital única no nome dos arquivos do framework a cada novo build. O meu `index.html` estava em cache no navegador apontando para o nome antigo, enquanto o arquivo real na pasta já era algo diferente, como `dotnet.4fg8uncn3m.js`.
+
+A solução definitiva (que está listada na seção 19 do tutorial) foi parar o servidor, rodar um `dotnet clean`, apagar as pastas `bin/` e `obj/` manualmente, recompilar o projeto e recarregar a página com `Ctrl + Shift + R`. Apertar só F5 não adiantava nada, porque ele continuava lendo justamente o `index.html` defasado que estava no cache.
