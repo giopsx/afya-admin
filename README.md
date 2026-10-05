@@ -4,12 +4,12 @@
 
 | | |
 |---|---|
-| **Aluno(a)** | `PREENCHER` |
-| **Matrícula** | `PREENCHER` |
-| **Faculdade** | `PREENCHER` |
-| **Curso** | `PREENCHER` |
-| **Disciplina** | `PREENCHER` |
-| **Professor(a)** | `PREENCHER` |
+| **Aluno(a)** | `Giovanna Secundo Penso` |
+| **Matrícula** | `0035674` |
+| **Faculdade** | `São Lucas Afya` |
+| **Curso** | `Ciência da Computação` |
+| **Disciplina** | `Programação para Sistemas Web` |
+| **Professor(a)** | `Lilo` |
 | **Semestre** | 2026.2 |
 
 ## Objetivo do projeto
@@ -129,7 +129,10 @@ afya-admin/
 
 **1. Como uma aplicação Blazor WebAssembly inicia no navegador? Qual é o papel do `index.html`, da `<div id="app">` e do `Program.cs`?**
 
-`PREENCHER`
+`A aplicação Blazor WASM começa a rodar quando o navegador carrega o **index.html**, que fica na pasta `wwwroot/` e é o único arquivo HTML real de todo o projeto. Inclusive, mexi nele para trocar o `<title>` para "Afya Pedagógico | Admin", puxar a fonte Inter e tirar aquele `<link>` do `afya-admin.styles.css`. É esse HTML que chama o `blazor.webassembly.js`, responsável por baixar o runtime do .NET e as DLLs da aplicação para rodar direto no browser.
+Durante o carregamento, fica tudo dentro da **`<div id="app">`**. Acompanhei isso de perto pelo DevTools: no começo, essa div fica só com a minha animação de loading na tela.
+Assim que o runtime .NET inicializa, ele executa o **Program.cs**. É lá que a linha `builder.RootComponents.Add<App>("#app")` conecta a raiz do C# com a tag do HTML. Um detalhe importante é que, logo acima dessa linha, chamei o `builder.Services.AddMudServices()` — sem essa configuração do MudBlazor, os `MudMenu` do meu menu de notificações e do seletor de período nem abriam.
+Com o C# no comando, o roteador do **App.razor** lê a URL atual para decidir qual página renderizar. Como estou entrando na rota principal, ele cai no meu `Pages/Dashboard.razor`, por conta da diretiva `@page "/"`. Nesse momento, a animação de loading dentro da `<div id="app">` some e o layout completo do painel é renderizado na tela.`
 
 **2. Qual é a diferença entre um Layout, uma Page e um Component neste projeto? Dê um exemplo de cada.**
 
